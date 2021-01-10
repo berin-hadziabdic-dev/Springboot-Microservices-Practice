@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: gateway-service
+server:
+  port: 8080
+
+  spring:
+    cloud:
+      gateway:
+        routes:
+          - id: accounts
+            uri: http://localhost:8081
+            predicates:
+              - Path=/accounts/**
+          - id: customer
+            uri: http://localhost:8082
+            predicates:
+              - Path=/accounts/**
+          - id: loans
+            uri: http://localhost:8083
+            predicates:
+              - Path=/loans/**
